@@ -52,10 +52,19 @@ class HelloSpec extends AnyFlatSpec with Matchers {
     }
   }
 
-  "invalid gtag json" should "become a None" in {
+  "gtag json that isn't an object" should "become a None" in {
     val input = """ [1,2,3] """
     val g = Obj1.gtag_decoder(json(input).hcursor)
     g.isRight shouldEqual true
-    g.right.get.isEmpty shouldEqual true
+    val myGTag: Option[Obj1.Gtag] = g.right.get
+    myGTag.isEmpty shouldEqual true
+  }
+
+  "gtag json that is numbers" should "become a None" in {
+    val input = """  100  """
+    val g = Obj1.gtag_decoder(json(input).hcursor)
+    g.isRight shouldEqual true
+    val myGTag: Option[Obj1.Gtag] = g.right.get
+    myGTag.isEmpty shouldEqual true
   }
 }
