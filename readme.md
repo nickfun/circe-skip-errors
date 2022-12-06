@@ -40,3 +40,8 @@ $ sbt test
 [info] All tests passed.
 [success] Total time: 1 s, completed Oct 11, 2022, 10:45:25 AM
 ```
+
+## Other Thoughts
+
+Should this be a blog post?
+
